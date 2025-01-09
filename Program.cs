@@ -62,10 +62,10 @@ class Program
           */
 
         int customerAge = 17;
-        int lowestLimit = 18;
-        int higherLimit = 21;
+        /* int lowestLimit = 18;
+        int higherLimit = 21; */
 
-        if (customerAge < lowestLimit)
+        /* if (customerAge < lowestLimit)
         {
             Console.WriteLine("You're not old enough to enter either establishment.");
         }
@@ -76,7 +76,64 @@ class Program
         else 
         {
             Console.WriteLine("You can enter either establishment");
+        } */
+        /* 
+        Opperasjonen vi gjør ovenfor kan også representere via en Switch-Case statement.
+        Der ser vi om verdien til en variabel "switcher" og kjører forskjellige kodeblokker, eller "caser" for hver gyldig verdi av variablen vår. */
+
+        switch (customerAge)
+        {
+            case <18: 
+            {
+                Console.WriteLine("You're not old enough to enter either establishment.");
+                break;
+            }
+            case <21:
+            {
+                Console.WriteLine("You can enter 18+ establishment");
+                break;
+            }
+            default: 
+            {
+                Console.WriteLine("You can enter either establishment");
+                break;
+            }
         }
         
+
+        /* 
+        Nedenfor ser vi et eksempel hvor vi har to uavhengige variabler, som begge skjekkes i en if statement. 
+        
+        Vi skal se på to brukerinputs, en er et brukernavn, det andre er et passord. Vi skal se om de har en verdi, og lage flyt basert på dette. 
+        Vi bruker her et designprinsipp som heter "early return" for å avslutte programmet vårt for hver gren.
+        Det er en måte for oss å virkelig reinforce at det er ekslusivt denne grenen, og kun denne grenen som skal kjøre.
+        Dette er et prinsipp som er veldig viktig når vi skal begynne med errorhåndtering. 
+        I prinsipp er dette veldig likt måten en switch-case statement fungerer på, men siden den bare tillater operasjoner på en variabel om gangen,
+        krever dette tilfellet en if/else blokk, hvis ikke vi finner en datatype som kan inkapsle begge verdiene våre (I en senere modul skal vi se om vi finner en som gjør dette.).*/
+
+        string userName = string.Empty;
+        string password = "1234";
+
+        if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+        {
+            Console.WriteLine("Username and password is required to continue");
+            return;
+        }
+        if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+        {
+            Console.WriteLine("Welcome in, user!");
+            return;
+        }
+        if (string.IsNullOrEmpty(userName))
+        {
+            Console.WriteLine("Username is required!");
+            return;
+        }
+        if (string.IsNullOrEmpty(password))
+        {
+            Console.WriteLine("Password is required");
+            return;
+        }
+
     }
 }
